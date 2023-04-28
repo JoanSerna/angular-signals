@@ -1,0 +1,42 @@
+<div class="grid grid-cols-3 h-full items-center">
+  <div></div>
+  <div class="flex flex-col gap-y-12">
+    <mat-card class="p-8">
+      <h2 mat-card-title>TODO LIST</h2>
+      <div class="flex flex-col">
+        <mat-checkbox
+          color="primary"
+          *ngFor="let todo of pendingTodos();trackBy:trackById"
+          (change)="updateTodo(todo.id,$event)">{{todo.name}}</mat-checkbox>
+      </div>
+    </mat-card>
+
+    <mat-card class="p-8" *ngIf="formAddToDo">
+      <h2 mat-card-title>Crear ToDo</h2>
+      <form class="flex items-center gap-x-8" [formGroup]="formAddToDo"
+            (ngSubmit)="addNewTodo()">
+        <mat-form-field>
+          <mat-label>ToDo Name</mat-label>
+          <input type="text" matInput formControlName="name">
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit"
+                [disabled]="formAddToDo.invalid">CREAR
+        </button>
+      </form>
+    </mat-card>
+    <mat-card class="p-8">
+      <h2 mat-card-title>TODO LIST COMPLETED</h2>
+      <div class="flex flex-col">
+        <mat-checkbox
+          color="primary"
+          *ngFor="let todo of completedTodos();trackBy:trackById"
+          [checked]="todo.status"
+          (change)="updateTodo(todo.id,$event)">{{todo.name}}</mat-checkbox>
+      </div>
+    </mat-card>
+
+  </div>
+  <div></div>
+</div>
+
+

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FactoringComponent } from './factoring.component';
+import { TodoComponent } from './todo.component';
 
-describe('FactoringComponent', () => {
-  let component: FactoringComponent;
-  let fixture: ComponentFixture<FactoringComponent>;
+describe('TodoComponent', () => {
+  let component: TodoComponent;
+  let fixture: ComponentFixture<TodoComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FactoringComponent]
+      declarations: [TodoComponent]
     });
-    fixture = TestBed.createComponent(FactoringComponent);
+    fixture = TestBed.createComponent(TodoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

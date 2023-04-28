@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FactoringComponent } from './factoring/factoring.component';
+import {TodoComponent} from "./todo/todo.component";
 
-const routes: Routes = [{ path: '', component: FactoringComponent }];
+const routes: Routes = [{ path: '', component: TodoComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
