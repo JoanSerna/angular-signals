@@ -5,7 +5,8 @@ import {
   effect,
   inject,
   OnInit,
-  signal
+  signal,
+  untracked
 } from '@angular/core';
 import {Todo, TodoFormReq} from "./models/todo";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
@@ -18,12 +19,27 @@ import {MatCheckboxChange} from "@angular/material/checkbox";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoComponent implements OnInit {
+  userName = signal('Joan Serna')
+  currentUserName = signal('')
   todos = signal<Todo[]>([])
-  pendingTodos = computed<Todo[]>(() => this.todos().filter(todo => !todo.status))
-  completedTodos = computed<Todo[]>(() => this.todos().filter(todo => todo.status))
+  pendingTodos = computed<Todo[]>(
+    () => this.todos().filter(todo => !todo.status),
+    {
+      equal: (prev, current) => prev.length === current.length
+    })
+  completedTodos = computed<Todo[]>(
+    () => this.todos().filter(todo => todo.status),
+    {
+      equal: (prev, current) => prev.length === current.length
+    })
   formAddToDo: FormGroup<TodoFormReq> | undefined
   private readonly formBuilder: FormBuilder = inject(FormBuilder)
-  private readonly effects = [effect(() => console.log('Current ToDos', this.todos()))]
+  private readonly effects = [effect(() => {
+    const todos = this.todos()
+    untracked(() => {
+      console.log('Current ToDos and username', todos, this.userName())
+    })
+  })]
 
   ngOnInit(): void {
     this.formAddToDo = this.loadFormAddTodo();

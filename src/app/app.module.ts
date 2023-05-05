@@ -10,12 +10,14 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {CommonModule} from "@angular/common";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
+import { UpdateUserComponent } from './user/update-user/update-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoComponent
+    TodoComponent,
+    UpdateUserComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import {CommonModule} from "@angular/common";
     MatCardModule,
     MatCheckboxModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    NgOptimizedImage
   ],
   providers: [],
   bootstrap: [AppComponent]

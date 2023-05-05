@@ -1,8 +1,12 @@
-<div class="grid grid-cols-3 h-full items-center">
-  <div></div>
+<div class="grid grid-cols-3 h-full items-center gap-x-4">
+  <div class="flex flex-col gap-y-12">
+    <app-update-user [userName]="userName"
+                     (changedUser)="currentUserName.set($event())"></app-update-user>
+  </div>
   <div class="flex flex-col gap-y-12">
     <mat-card class="p-8">
       <h2 mat-card-title>TODO LIST</h2>
+      <small>current username: {{currentUserName()}}</small>
       <div class="flex flex-col">
         <mat-checkbox
           color="primary"
@@ -36,7 +40,16 @@
     </mat-card>
 
   </div>
-  <div></div>
+  <div class="h-full flex justify-center items-start pt-8">
+    <div class="flex items-center space-x-4">
+      <img class="w-10 h-10 rounded-full"
+           ngSrc="assets/img/klym.png" alt="klym" width="170" height="170">
+      <div class="font-medium dark:text-white">
+        <div>{{userName()}}</div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 

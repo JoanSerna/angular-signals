@@ -1,0 +1,12 @@
+<mat-card class="p-8">
+  <h2 mat-card-title>CHANGE USERNAME</h2>
+  <div class="flex flex-col">
+    <mat-form-field *ngIf="userName()">
+      <mat-label>Username</mat-label>
+      <input type="text" matInput [formControl]="userNameForm">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit"
+            [disabled]="userNameForm.invalid" (click)="updateUser()">ACTUALIZAR
+    </button>
+  </div>
+</mat-card>
